@@ -1,79 +1,104 @@
-# CardioGuard - Cardiovascular Disease Prediction
+# CardioGuard - Cardiovascular Disease Risk Prediction
 
-## 🏥 Overview
-CardioGuard is a production-ready Web Application that predicts the likelihood of cardiovascular disease using Machine Learning (Random Forest). It features a modern, responsive UI designed with a healthcare theme and provides instant risk analysis based on user health metrics.
+## Overview
+CardioGuard is a Flask-based machine learning web app that predicts cardiovascular disease risk from 11 health inputs.
+It uses a trained Random Forest model and provides instant prediction results through a modern multi-page interface.
 
-## 🚀 Features
-- **Machine Learning Backend**: Built with Flask and Scikit-Learn.
-- **Modern UI**: Glassmorphism design, responsive Layout, and smooth animations.
-- **Interactive Form**: Easy-to-use input for 11 health indicators.
-- **Immediate Results**: Real-time prediction with clear risk visualization.
+## Key Features
+- ML-powered prediction API (`/predict` POST) using a trained `cardio_model.pkl`
+- Multi-page web UI:
+  - Home (`/`)
+  - Dataset information (`/about`)
+  - Model visuals (`/visuals`)
+  - Pipeline explanation (`/model`)
+  - Prediction form (`/predict`)
+- Interactive prediction form with real-time modal result display
+- Pre-generated model/data visualizations for fast rendering
+- Responsive frontend with custom CSS animations and themed styling
 
-## 🛠️ Tech Stack
-- **Frontend**: HTML5, CSS3, Bootstrap 5, JavaScript (Fetch API)
-- **Backend**: Python (Flask)
-- **ML**: Scikit-Learn (Random Forest Classifier), Pandas, NumPy
-- **Deployment**: Render / Railway (gunicorn)
+## Tech Stack
+- Frontend: HTML, CSS, Bootstrap 5, JavaScript (Fetch API)
+- Backend: Python, Flask
+- ML/Data: scikit-learn, pandas, numpy, joblib
+- Visualization: matplotlib, seaborn
+- Deployment: gunicorn (Render/Railway compatible)
 
-## 📂 Project Structure
+## Project Structure
+```text
+ML-Project-main/
++-- app.py
++-- Procfile
++-- requirements.txt
++-- README.md
++-- model/
+�   +-- train_model.py
+�   +-- cardio_model.pkl
++-- static/
+�   +-- css/
+�   �   +-- style.css
+�   +-- js/
+�   �   +-- script.js
+�   +-- plots/
+�       +-- age_dist.png
+�       +-- confusion_matrix.png
+�       +-- feature_importance.png
+�       +-- learning_curve.png
+�       +-- prob_dist.png
+�       +-- roc_curve.png
++-- templates/
+    +-- base.html
+    +-- home.html
+    +-- about.html
+    +-- visuals.html
+    +-- model_info.html
+    +-- predict.html
 ```
-/
-├── app.py                # Flask Application
-├── model/
-│   ├── train_model.py    # Script to train and save the model
-│   └── cardio_model.pkl  # Trained ML Model (Generated)
-├── static/
-│   ├── css/style.css     # Custom Styles
-│   └── js/script.js      # Frontend Logic
-├── templates/
-│   └── index.html        # Main Interface
-├── requirements.txt      # Dependencies
-├── Procfile              # Deployment Command
-└── README.md             # Documentation
+
+## Local Setup
+### 1. Install dependencies
+```bash
+pip install -r requirements.txt
 ```
 
-## ⚙️ Setup & Installation
+### 2. Train model (if needed)
+Run this if `model/cardio_model.pkl` is missing or you want a fresh model:
+```bash
+python model/train_model.py
+```
 
-### Prerequisite
-Ensure you have Python 3.8+ installed.
+### 3. Start app
+```bash
+python app.py
+```
+Open: `http://127.0.0.1:5000`
 
-1. **Clone or Download the Project**
-   ```bash
-   git clone <repo_url>
-   cd <project_folder>
-   ```
+## Prediction Input Features
+The model expects these 11 fields:
+- `age`
+- `gender`
+- `height`
+- `weight`
+- `ap_hi`
+- `ap_lo`
+- `cholesterol`
+- `gluc`
+- `smoke`
+- `alco`
+- `active`
 
-2. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Deployment (Render)
+1. Push project to GitHub.
+2. Create a new Web Service on Render.
+3. Use:
+- Build Command:
+```bash
+pip install -r requirements.txt && python model/train_model.py
+```
+- Start Command:
+```bash
+gunicorn app:app
+```
 
-3. **Train the Model** (Important!)
-   You must generate the model file first.
-   ```bash
-   python model/train_model.py
-   ```
-   *This will create `model/cardio_model.pkl`.*
-
-4. **Run the Application**
-   ```bash
-   python app.py
-   ```
-   Open your browser at `http://127.0.0.1:5000`.
-
-## ☁️ Deployment Guide (Render)
-
-1. **Push to GitHub**: Upload this code to a GitHub repository.
-2. **Create New Web Service**: Go to [Render Dashboard](https://dashboard.render.com/) -> New -> Web Service.
-3. **Connect Repo**: Select your repository.
-4. **Settings**:
-   - **Environment**: Python 3
-   - **Build Command**: `pip install -r requirements.txt && python model/train_model.py` (Adding training here ensures model exists on cloud)
-   - **Start Command**: `gunicorn app:app`
-5. **Deploy**: Click Create Web Service.
-
-## 📸 Screenshots
-*(Add screenshots here after running the app)*
-
-## ⚠️ Disclaimer
-This application is for educational purposes only and should not be used as a substitute for professional medical diagnosis.
+## Notes
+- This project is for educational purposes.
+- Prediction output is not a substitute for professional medical diagnosis.
