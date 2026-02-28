@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Visualizations | CardioGuard{% endblock %}
+
+{% block content %}
+<section class="section-space">
+    <div class="container">
+        <div class="title-panel">
+            <h1><span class="text-sky">Visual</span> Analytics</h1>
+            <p>Explore model performance and data insight plots.</p>
+        </div>
+
+        <ul class="nav nav-pills clean-pills mb-4 justify-content-center" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation"><button class="nav-link active" id="pills-model-tab" data-bs-toggle="pill" data-bs-target="#pills-model" type="button">Model Performance</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="pills-data-tab" data-bs-toggle="pill" data-bs-target="#pills-data" type="button">Data Insights</button></li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-model">
+                <div class="row g-4">
+                    <div class="col-lg-6"><article class="viz-card"><h6>Confusion Matrix</h6><img src="{{ url_for('static', filename='plots/confusion_matrix.png') }}" class="img-fluid rounded" alt="Confusion Matrix" onerror="this.src='https://via.placeholder.com/600x400?text=Run+Model+Training';"></article></div>
+                    <div class="col-lg-6"><article class="viz-card"><h6>Feature Importance</h6><img src="{{ url_for('static', filename='plots/feature_importance.png') }}" class="img-fluid rounded" alt="Feature Importance" onerror="this.src='https://via.placeholder.com/600x400?text=Run+Model+Training';"></article></div>
+                    <div class="col-lg-6"><article class="viz-card"><h6>ROC Curve</h6><img src="{{ url_for('static', filename='plots/roc_curve.png') }}" class="img-fluid rounded" alt="ROC Curve" onerror="this.src='https://via.placeholder.com/600x400?text=Run+Model+Training';"></article></div>
+                    <div class="col-lg-6"><article class="viz-card"><h6>Learning Curve</h6><img src="{{ url_for('static', filename='plots/learning_curve.png') }}" class="img-fluid rounded" alt="Learning Curve" onerror="this.src='https://via.placeholder.com/600x400?text=Run+Model+Training';"></article></div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-data">
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-8"><article class="viz-card"><h6>Age Distribution</h6><img src="{{ url_for('static', filename='plots/age_dist.png') }}" class="img-fluid rounded" alt="Age Distribution" onerror="this.src='https://via.placeholder.com/600x400?text=Run+Model+Training';"></article></div>
+                    <div class="col-lg-8"><article class="viz-card"><h6>Prediction Probability</h6><img src="{{ url_for('static', filename='plots/prob_dist.png') }}" class="img-fluid rounded" alt="Probability Distribution" onerror="this.src='https://via.placeholder.com/600x400?text=Run+Model+Training';"></article></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Predict Risk | CardioGuard{% endblock %}
+
+{% block content %}
+<section class="section-space">
+    <div class="container">
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-4">
+                <aside class="side-card sticky-lg-top">
+                    <h3>AI Analysis</h3>
+                    <p>Enter your health metrics accurately. Our model compares your profile with thousands of patterns to estimate cardiovascular risk.</p>
+                    <ul>
+                        <li>Privacy first: no data is saved on servers</li>
+                        <li>Fast prediction with machine learning inference</li>
+                        <li>Educational output, not medical diagnosis</li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="col-lg-8">
+                <div class="form-shell">
+                    <div class="form-shell-head">
+                        <h2>Cardio <span class="text-gradient">Risk Input</span> Form</h2>
+                        <span>Provide realistic values for meaningful prediction output.</span>
+                    </div>
+
+                    <form id="predictionForm">
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label for="age" class="form-label">Age (years)</label>
+                                <input type="number" class="form-control" id="age" required min="10" max="100" placeholder="45">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="gender" class="form-label">Gender</label>
+                                <select class="form-select" id="gender" required>
+                                    <option value="" selected disabled>Select...</option>
+                                    <option value="2">Male</option>
+                                    <option value="1">Female</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="height" class="form-label">Height (cm)</label>
+                                <input type="number" class="form-control" id="height" required min="50" max="250" placeholder="175">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="weight" class="form-label">Weight (kg)</label>
+                                <input type="number" class="form-control" id="weight" required min="30" max="200" placeholder="70">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="ap_hi" class="form-label">Systolic BP</label>
+                                <input type="number" class="form-control" id="ap_hi" required placeholder="120" min="60" max="250">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="ap_lo" class="form-label">Diastolic BP</label>
+                                <input type="number" class="form-control" id="ap_lo" required placeholder="80" min="40" max="150">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cholesterol" class="form-label">Cholesterol</label>
+                                <select class="form-select" id="cholesterol" required>
+                                    <option value="1">Normal</option>
+                                    <option value="2">Above Normal</option>
+                                    <option value="3">Well Above Normal</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="gluc" class="form-label">Glucose</label>
+                                <select class="form-select" id="gluc" required>
+                                    <option value="1">Normal</option>
+                                    <option value="2">Above Normal</option>
+                                    <option value="3">Well Above Normal</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="toggle-grid mb-4">
+                            <label class="toggle-card" for="smoke"><input class="form-check-input" type="checkbox" id="smoke"><span>Smoker</span></label>
+                            <label class="toggle-card" for="alco"><input class="form-check-input" type="checkbox" id="alco"><span>Alcohol Intake</span></label>
+                            <label class="toggle-card" for="active"><input class="form-check-input" type="checkbox" id="active" checked><span>Physically Active</span></label>
+                        </div>
+
+                        <button type="submit" class="btn btn-brand btn-lg w-100" id="predictBtn">Analyze Risk <i class="fa-solid fa-arrow-right ms-2"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="resultModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content result-shell">
+            <div class="modal-body p-4 text-center">
+                <div id="loadingSpinner" class="d-none">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-3 mb-0">Analyzing your data...</p>
+                </div>
+
+                <div id="resultContent" class="d-none">
+                    <div id="iconContainer" class="mb-3"></div>
+                    <h2 id="resultTitle" class="fw-bold mb-2">Result</h2>
+                    <p id="resultMessage" class="lead mb-3">Message</p>
+                    <div class="alert disclaimer-box text-start mb-3">
+                        <strong>Disclaimer:</strong> Educational output only (~73% model accuracy). Not a replacement for clinical diagnosis.
+                    </div>
+                    <button type="button" class="btn btn-soft" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

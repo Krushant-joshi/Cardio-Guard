@@ -1,0 +1,86 @@
+{% extends "base.html" %} {% block title %}Home | CardioGuard{% endblock %} {%
+block content %}
+<section class="hero-wrap">
+  <div class="container">
+    <div class="hero-panel">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <span class="hero-badge">AI Cardiovascular Assessment</span>
+          <h1 class="hero-title">
+            A Better Looking Clinical UI for
+            <span class="text-gradient">Heart Risk</span> Screening
+          </h1>
+          <p class="hero-text">
+            Enter key health signals and generate risk prediction through a
+            clean, modern workflow powered by machine learning.
+          </p>
+          <div class="hero-actions">
+            <a href="{{ url_for('predict') }}" class="btn btn-brand btn-lg"
+              >Start Prediction</a
+            >
+            <a href="{{ url_for('model_info') }}" class="btn btn-soft btn-lg"
+              >How It Works</a
+            >
+          </div>
+          <div class="hero-chips">
+            <span>11 Features</span>
+            <span>Random Forest</span>
+            <span>~73% Accuracy</span>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="hero-image-card">
+            <img
+              src="https://previews.123rf.com/images/stokkete/stokkete1402/stokkete140200024/25595916-doctor-holding-an-heart-cardiologist-and-cardiovascular-diseases-concept.jpg"
+              alt="Doctor consulting patient with heart health report"
+              class="img-fluid"
+              onerror="
+                this.onerror = null;
+                this.src =
+                  'https://img.freepik.com/free-vector/heart-health-concept-illustration_114360-1123.jpg?w=900';
+              "
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-space">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <article class="info-card h-100">
+          <i class="fa-solid fa-table-cells-large"></i>
+          <h4><span class="text-emerald">Dataset</span> Structure</h4>
+          <p>
+            Objective, examination, and lifestyle features form the core input
+            space.
+          </p>
+          <a href="{{ url_for('about') }}">Explore Dataset</a>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="info-card h-100">
+          <i class="fa-solid fa-chart-line"></i>
+          <h4><span class="text-sky">Visual</span> Analytics</h4>
+          <p>Inspect ROC, confusion matrix, and key diagnostic visual plots.</p>
+          <a href="{{ url_for('visuals') }}">Open Visuals</a>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="info-card h-100">
+          <i class="fa-solid fa-diagram-project"></i>
+          <h4><span class="text-amber">Model</span> Pipeline</h4>
+          <p>
+            Understand ingestion, preprocessing, training, and evaluation
+            stages.
+          </p>
+          <a href="{{ url_for('model_info') }}">Read Pipeline</a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

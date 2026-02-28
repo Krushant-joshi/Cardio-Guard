@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}How It Works | CardioGuard{% endblock %}
+
+{% block content %}
+<section class="section-space">
+    <div class="container">
+        <div class="title-panel">
+            <h1>How the <span class="text-gradient">Model</span> Works</h1>
+            <p>Pipeline view from dataset preparation to evaluated predictions.</p>
+        </div>
+
+        <div class="timeline-grid">
+            <article><span>01</span><h5>Data Ingestion</h5><p>Structured cardiovascular records are loaded and cleaned.</p></article>
+            <article><span>02</span><h5>Preprocessing</h5><p>Feature encoding and outlier handling for stable model behavior.</p></article>
+            <article><span>03</span><h5>Random Forest</h5><p>Ensemble trees capture risk patterns across health features.</p></article>
+            <article><span>04</span><h5>Evaluation</h5><p>Hold-out validation with confusion matrix, ROC, and learning curves.</p></article>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('visuals') }}" class="btn btn-brand">Open Visual Proof</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
