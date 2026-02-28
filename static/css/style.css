@@ -91,6 +91,12 @@ body::before {
     border: 1px solid #cde0d4;
 }
 
+.brand-logo {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
 .nav-link {
     color: #334339;
     font-weight: 500;
