@@ -1,12 +1,13 @@
-# CardioGuard by Krushant Joshi - Cardiovascular Disease Risk Prediction
+ï»¿# CardioGuard by Krushant Joshi - Cardiovascular Disease Risk Prediction
 
 ## Overview
 CardioGuard is a Flask-based machine learning web app that predicts cardiovascular disease risk from 11 health inputs.
 It uses a trained Random Forest model and provides instant prediction results through a modern multi-page interface.
 
-## Project Identity
-- Project Owner: **Krushant Joshi**
-- Project Name: **CardioGuard by Krushant Joshi**
+
+## Live Demo
+- Visit the live web app: **https://cardio-guard-e46p.onrender.com**
+
 
 ## Key Features
 - ML-powered prediction API (`/predict` POST) using a trained `cardio_model.pkl`
@@ -35,20 +36,20 @@ ML-Project-main/
 +-- requirements.txt
 +-- README.md
 +-- model/
-¦   +-- train_model.py
-¦   +-- cardio_model.pkl
+Â¦   +-- train_model.py
+Â¦   +-- cardio_model.pkl
 +-- static/
-¦   +-- css/
-¦   ¦   +-- style.css
-¦   +-- js/
-¦   ¦   +-- script.js
-¦   +-- plots/
-¦       +-- age_dist.png
-¦       +-- confusion_matrix.png
-¦       +-- feature_importance.png
-¦       +-- learning_curve.png
-¦       +-- prob_dist.png
-¦       +-- roc_curve.png
+Â¦   +-- css/
+Â¦   Â¦   +-- style.css
+Â¦   +-- js/
+Â¦   Â¦   +-- script.js
+Â¦   +-- plots/
+Â¦       +-- age_dist.png
+Â¦       +-- confusion_matrix.png
+Â¦       +-- feature_importance.png
+Â¦       +-- learning_curve.png
+Â¦       +-- prob_dist.png
+Â¦       +-- roc_curve.png
 +-- templates/
     +-- base.html
     +-- home.html
